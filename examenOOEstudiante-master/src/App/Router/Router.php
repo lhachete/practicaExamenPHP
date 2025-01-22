@@ -30,11 +30,12 @@ class Router {
         // Lógica para crear una instancia y llamar al método de la clase
         $uriExplotada = explode('/', $url);
         $rutaTransformada = $this->cambiar_id_uri($url);
-
+        $accion=[];
         if (isset($this->rutas[$metodohttp][$rutaTransformada])) {
             $accion = $this->rutas[$metodohttp][$rutaTransformada];
         } else {
-            return include_once DIRECTORIO_VISTAS . "404.php";
+            echo "pagina no encontrada";
+                //include_once DIRECTORIO_VISTAS . "404.php";
         }
 
         if (is_callable($accion)) {

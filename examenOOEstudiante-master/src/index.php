@@ -5,6 +5,7 @@ include_once "vendor/autoload.php";
 
 use App\Router\Router;
 use App\Class\Estudiante;
+use App\Controller\EstudianteController;
 
 
 $router = new Router();
@@ -26,7 +27,7 @@ $router->addRoute('post','/estudiante',function(){
 });
 
 $router->addRoute('post', '/estudiante/delete', function() {
-    //var_dump($_POST); // Esto ayuda a verificar si los datos son recibidos correctamente
+    //var_dump($_POST);
     $nia = $_POST['nia'];
 
     if (!is_null($nia)) {
@@ -38,7 +39,7 @@ $router->addRoute('post', '/estudiante/delete', function() {
 
 
 
-//$router->addRoute('delete','/estudiante/{id}',[\App\Controller\EstudianteController::class,'destroy']);
+$router->addRoute('delete','/estudiante/{id}',[EstudianteController::class,'destroy']);
 
 
 $router->resolver($_SERVER['REQUEST_METHOD'],$_SERVER['REQUEST_URI']);
