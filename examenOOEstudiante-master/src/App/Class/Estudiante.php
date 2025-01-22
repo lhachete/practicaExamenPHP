@@ -9,7 +9,7 @@ class Estudiante implements JsonSerializable
     private int $nia;
     private string $nombre;
     private string $correo;
-    private \Expediente $expediente;
+    private Expediente $expediente;
 
     public function getNia(): int
     {

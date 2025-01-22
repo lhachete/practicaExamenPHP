@@ -18,8 +18,22 @@ include_once DIRECTORIO_VISTAS."template/navegacion.php";
                             <label for="correo">Correo:</label>
                             <input name="correo" type="email" required>
                             <input type="submit" value="Crear estudiante">
-
                         </form>
+
+                        <h2 style="margin: 2rem 0px">Borrar un estudiante</h2>
+                        <form method="post" action="/estudiante/delete">
+                            <label for="nia">NIA:</label>
+                            <input name="nia" type="number" required>
+                            <input type="submit" value="Borrar estudiante">
+                        </form>
+
+                        <h2 style="margin: 2rem 0px">Obtener un estudiante</h2>
+                        <form method="get" action="/estudiante/get">
+                            <label for="nia">NIA:</label>
+                            <input name="nia" type="number" required>
+                            <input type="submit" value="Obtener estudiante">
+                        </form>
+
                     </div>
                 </div>
             </div>
@@ -32,3 +46,8 @@ include_once DIRECTORIO_VISTAS."template/navegacion.php";
 include_once DIRECTORIO_VISTAS."template/footer.php";
 include_once DIRECTORIO_VISTAS."template/modal.php";
 include_once DIRECTORIO_VISTAS."template/final.php";
+
+//<label for="nombre">Nombre:</label>
+//                            <input name="nombre" type="text" required>
+//                            <label for="correo">Correo:</label>
+//                            <input name="correo" type="email" required>

@@ -1,7 +1,7 @@
 <?php
 
 const DIRECTORIO_RECURSOS = "/App/View/template/assets/";
-const DIRECTORIO_VISTAS = "App/View/";
+const DIRECTORIO_VISTAS = __DIR__ . "/App/View/";
 
 const DIRECTORIO_CONTROLADOR = "App/Controller/";
 const NOMBRE_CONTAINER_DATABASE = "mariadbexamen";

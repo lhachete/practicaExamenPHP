@@ -25,14 +25,21 @@ $router->addRoute('post','/estudiante',function(){
     $estudiante->save();
 });
 
+$router->addRoute('post', '/estudiante/delete', function() {
+    //var_dump($_POST); // Esto ayuda a verificar si los datos son recibidos correctamente
+    $nia = $_POST['nia'];
 
-//Rutas enlazadas a controladores, lógica de la aplicación
-//Usuarios
-//$router->addRoute('get','/users',[\App\Controller\UsuarioController::class,'index']);
+    if (!is_null($nia)) {
+        \App\Model\EstudianteModel::borrarEstudiante($nia);
+    } else {
+        echo "Introduce un NIA";
+    }
+});
 
 
-//Usuario API
-//$router->addRoute('post','/api/users/{id}',[\App\Controller\UsuarioController::class,'store']);
+
+//$router->addRoute('delete','/estudiante/{id}',[\App\Controller\EstudianteController::class,'destroy']);
+
 
 $router->resolver($_SERVER['REQUEST_METHOD'],$_SERVER['REQUEST_URI']);
 

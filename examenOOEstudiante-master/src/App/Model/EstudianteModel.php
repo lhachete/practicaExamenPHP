@@ -32,5 +32,21 @@ class EstudianteModel
 
     }
 
+    public static function borrarEstudiante(string $nia){
+        $conexion = EstudianteModel::conectarBD();
+        $sql = "DELETE FROM estudiante WHERE nia = :nia";
+        $secuenciaPreparada = $conexion->prepare($sql);
+        $secuenciaPreparada->bindValue(':nia', $nia);
+        $secuenciaPreparada->execute();
+    }
 
+
+    public static function obtenerEstudiante(string $nia)
+    {
+        $conexion = EstudianteModel::conectarBD();
+        $sql = "SELECT * FROM estudiante WHERE nia = :nia";
+        $secuenciaPreparada = $conexion->prepare($sql);
+        $secuenciaPreparada->bindValue(':nia', $nia);
+        $secuenciaPreparada->execute();
+    }
 }

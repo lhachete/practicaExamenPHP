@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Controller\InterfaceController;
+use App\Model\EstudianteModel;
 
 class EstudianteController implements InterfaceController
 {
@@ -39,6 +40,6 @@ class EstudianteController implements InterfaceController
 
     public function destroy($id, $api)
     {
-        // TODO: Implement destroy() method.
+        EstudianteModel::borrarEstudiante($id);
     }
 }
