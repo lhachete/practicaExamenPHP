@@ -35,7 +35,9 @@ class EstudianteController implements InterfaceController
 
     public function show($id, $api)
     {
-        // TODO: Implement show() method.
+
+        EstudianteModel::obtenerEstudiante($id);
+
     }
 
     public function destroy($id, $api)

@@ -40,7 +40,14 @@ $router->addRoute('post', '/estudiante/delete', function() {
 
 
 $router->addRoute('delete','/estudiante/{id}',[EstudianteController::class,'destroy']);
-
+$router->addRoute('get','/estudiante/{id}',[EstudianteController::class,'show']);
+//$router->addRoute('post','guardarusuario',function(){
+//
+//    $client = new Client();
+//    $request = new Request('PUT', 'http://localhost/estudiante/98745632');
+//    $res = $client->sendAsync($request)->wait();
+//    echo $res->getBody();
+//});
 
 $router->resolver($_SERVER['REQUEST_METHOD'],$_SERVER['REQUEST_URI']);
 

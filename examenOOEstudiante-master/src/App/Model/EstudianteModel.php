@@ -25,9 +25,9 @@ class EstudianteModel
                 VALUES (:nia, :nombre, :correo)";
 
         $secuenciaPreparada = $conexion->prepare($sql);
-        $secuenciaPreparada->bindValue(':nia', $estudiante->getNia());
-        $secuenciaPreparada->bindValue(':nombre', $estudiante->getNombre());
-        $secuenciaPreparada->bindValue(':correo', $estudiante->getCorreo());
+        $secuenciaPreparada->bindValue('nia', $estudiante->getNia());
+        $secuenciaPreparada->bindValue('nombre', $estudiante->getNombre());
+        $secuenciaPreparada->bindValue('correo', $estudiante->getCorreo());
         $secuenciaPreparada->execute();
 
     }
@@ -36,17 +36,26 @@ class EstudianteModel
         $conexion = EstudianteModel::conectarBD();
         $sql = "DELETE FROM estudiante WHERE nia = :nia";
         $secuenciaPreparada = $conexion->prepare($sql);
-        $secuenciaPreparada->bindValue(':nia', $nia);
+        $secuenciaPreparada->bindValue('nia', $nia);
         $secuenciaPreparada->execute();
     }
 
 
-    public static function obtenerEstudiante(string $nia)
+    public static function obtenerEstudiante(string $nia):string
     {
         $conexion = EstudianteModel::conectarBD();
         $sql = "SELECT * FROM estudiante WHERE nia = :nia";
         $secuenciaPreparada = $conexion->prepare($sql);
-        $secuenciaPreparada->bindValue(':nia', $nia);
+        $secuenciaPreparada->bindValue('nia', $nia);
+
         $secuenciaPreparada->execute();
+        $usuario=$secuenciaPreparada->fetch(PDO::FETCH_ASSOC);
+
+        if ($secuenciaPreparada->rowCount()){
+            return json_encode($usuario);
+        }else{
+            return "No se ha encontrado a nadie.";
+        }
     }
+//    $usuario->setNombre($datos_usuario['nombre']??) Datos que pueden llegar del formulario para editar. ( no lo voy hacer)
 }
